@@ -2,10 +2,11 @@
 //2) Start with actions, what are the things you want to do?
 
 //--What we want to do--//
-//Adding to do
+//?Adding to do
+//?Delete one item
 //Editing
-//Delete one item
 //Mark all completed
+//Mark one as completed
 //Toggle completed field, this is marking a single item as complete
 //Clear all completed.
 
@@ -14,6 +15,7 @@ export const ADD_TO_DO = "ADD_TO_DO";
 export const EDIT_TO_DO = "EDIT_TO_DO";
 export const DELETE_ONE_ITEM = "DELETE_ONE_ITEM";
 export const MARK_ALL_COMPLETED = "MARK_ALL_COMPLETED";
+export const MARK_SINGLE_COMPLETED = "CLEAR_ALL_COMPLETED";
 export const TOGGLE_SINGLE_COMPLETED = "TOGGLE_SINGLE_COMPLETED";
 export const CLEAR_ALL_COMPLETED = "CLEAR_ALL_COMPLETED";
 
@@ -25,13 +27,23 @@ const editToDo = (text, id) => {
   return { type: EDIT_TO_DO, payload: { id: id, text: text } };
 };
 
-//!FINISH HERE
-const deleteOneItem = () => {
-  return;
+const deleteOneItem = (id) => {
+  return {
+    type: DELETE_ONE_ITEM,
+    payload: id,
+  };
 };
 
 const markAllCompleted = () => {
-  return;
+  return { type: MARK_ALL_COMPLETED };
+};
+//!FINISH HERE
+
+const markSingleCompleted = (id, completed) => {
+  return {
+    type: MARK_SINGLE_COMPLETED,
+    payload: { id: id, completed: completed },
+  };
 };
 
 const toggleSingleCompleted = () => {
@@ -48,6 +60,7 @@ const actions = {
   editToDo,
   deleteOneItem,
   markAllCompleted,
+  markSingleCompleted,
   toggleSingleCompleted,
   clearAllCompleted,
 };

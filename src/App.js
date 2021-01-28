@@ -16,7 +16,14 @@ const INITALSTATE = {
 };
 
 //This is pulling in the actions needed from action.
-const { addToDo, editToDo } = actions;
+const {
+  addToDo,
+  editToDo,
+  deleteOneItem,
+  markAllCompleted,
+  markSingleCompleted,
+  clearAllCompleted,
+} = actions;
 
 function App() {
   const [state, dispatch] = useReducer(toDoReducer, INITALSTATE);
@@ -34,23 +41,49 @@ function App() {
     dispatch(editToDo(id));
   };
 
+  const handleDelete = (id) => {
+    dispatch(deleteOneItem(id));
+  };
+
   const handleChanges = (e) => {
     setNewToDo(e.target.value);
   };
+
+  const handleMarkAllCompleted = (e) => {
+    dispatch(markAllCompleted(e));
+  };
+
+  const handleMarkSingleCompleted = (e) => {
+    dispatch(markSingleCompleted(e));
+  };
   return (
-    <div className="App">
-      <h1>ToDo</h1>
-      <input
-        type="text"
-        // value={newToDo}
-        onChange={handleChanges}
-        name="toDo"
-        placeholder="What do you need to do today?"
-      />
-      <button onClick={handleSubmit}>Add to do</button>
-      {/* //Todo's -- Edit, Delete*/}
-      <ToDo handleEditing={handleEditing} todos={state.todos} />
-    </div>
+    <>
+      <div className="App">
+        <h1>ToDo</h1>
+        <input
+          type="text"
+          onChange={handleChanges}
+          name="toDo"
+          placeholder="What do you need to do today?"
+        />
+        <button onClick={handleSubmit}>Add to do</button>
+        <br></br>
+        <button onClick={handleMarkAllCompleted}>Mark All Completed</button>
+        <button>Clear All Completed</button>
+        <button>Delete All Items</button>
+        {/* //Todo's -- Edit, Delete*/}
+        <ToDo
+          handleMarkSingleCompleted={handleMarkSingleCompleted}
+          handleEditing={handleEditing}
+          handleSubmit={handleSubmit}
+          handleChanges={handleChanges}
+          dispatch={dispatch}
+          addToDo={addToDo}
+          todos={state.todos}
+          handleDelete={handleDelete}
+        />
+      </div>
+    </>
   );
 }
 
