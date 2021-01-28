@@ -42,6 +42,27 @@ const toDoReducer = (state, action) => {
         }),
       };
 
+    //!FINISH HERE
+    case DELETE_ONE_ITEM:
+      return {
+        ...state,
+      };
+
+    case MARK_ALL_COMPLETED:
+      return {
+        ...state,
+      };
+
+    case TOGGLE_SINGLE_COMPLETED:
+      return {
+        ...state,
+      };
+
+    case CLEAR_ALL_COMPLETED:
+      return {
+        ...state,
+      };
+
     default:
       // This is saying we are swicth
       return { ...state };

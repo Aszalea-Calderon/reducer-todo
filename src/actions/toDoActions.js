@@ -25,10 +25,31 @@ const editToDo = (text, id) => {
   return { type: EDIT_TO_DO, payload: { id: id, text: text } };
 };
 
+//!FINISH HERE
+const deleteOneItem = () => {
+  return;
+};
+
+const markAllCompleted = () => {
+  return;
+};
+
+const toggleSingleCompleted = () => {
+  return;
+};
+
+const clearAllCompleted = () => {
+  return;
+};
+
 //4) export an object. by just adding addToDo with a comma shows it what it needs to know
 const actions = {
   addToDo,
   editToDo,
+  deleteOneItem,
+  markAllCompleted,
+  toggleSingleCompleted,
+  clearAllCompleted,
 };
 
 //5) export the actions
