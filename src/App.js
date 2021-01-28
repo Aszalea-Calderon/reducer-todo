@@ -24,11 +24,14 @@ function App() {
   //Application level State
   const [newToDo, setNewToDo] = useState("");
 
-  // const [editing, setEditing] = useState(false);
-  // const [clear, setClear] = useState("");
+  //Actionable things
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addToDo(newToDo));
+  };
+
+  const handleEditing = (id) => {
+    dispatch(editToDo(id));
   };
 
   const handleChanges = (e) => {
@@ -46,7 +49,7 @@ function App() {
       />
       <button onClick={handleSubmit}>Add to do</button>
       {/* //Todo's -- Edit, Delete*/}
-      <ToDo todos={state.todos} />
+      <ToDo handleEditing={handleEditing} todos={state.todos} />
     </div>
   );
 }

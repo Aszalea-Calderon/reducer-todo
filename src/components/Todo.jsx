@@ -1,21 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+
+
 
 const Todo = (props) => {
 
-  const {todo, todos} = props
-  return (
-    <div>
+const [editing, setEditing]=useState(false)
 
-      {todos.map((todo) =>{
-        return <>
-        <div>
-          <p>{todo.todo}</p>
-          <button>Completed</button>
-          <button>Edit</button>
-        </div>
-        </>
-      })}
-    </div>
+  const {todo, todos, handleEditing} = props
+  return (
+    <>
+  {!editing ? (
+    <> {todos.map((todo) =>{
+      return <>
+      <div>
+        <p>{todo.todo}</p>
+        <button>Completed</button>
+        <button onClick={() =>{
+          setEditing(!editing)
+          handleEditing(todo.id)
+        }}>Edit</button>
+      </div>
+      </>
+    })}
+    </>
+  ):<>
+  <br></br>
+  <input ></input>
+  <button>Finish edit</button>
+  <button>Delete Item</button>
+  </>}
+     
+    </>
   )
 }
 
