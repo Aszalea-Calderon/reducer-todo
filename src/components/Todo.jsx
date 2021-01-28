@@ -1,9 +1,20 @@
 import React from 'react'
 
-const Todo = () => {
+const Todo = (props) => {
+
+  const {todo, todos} = props
   return (
     <div>
-      <h1>hi</h1>
+
+      {todos.map((todo) =>{
+        return <>
+        <div>
+          <p>{todo.todo}</p>
+          <button>Completed</button>
+          <button>Edit</button>
+        </div>
+        </>
+      })}
     </div>
   )
 }

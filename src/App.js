@@ -46,7 +46,7 @@ function App() {
       />
       <button onClick={handleSubmit}>Add to do</button>
       {/* //Todo's -- Edit, Delete*/}
-      <ToDo />
+      <ToDo todos={state.todos} />
     </div>
   );
 }

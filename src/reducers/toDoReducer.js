@@ -1,5 +1,5 @@
 //6)all of the action types. What you are using, not what you are exporting
-import {
+import actions, {
   ADD_TO_DO,
   EDIT_TO_DO,
   DELETE_ONE_ITEM,
@@ -43,9 +43,21 @@ const toDoReducer = (state, action) => {
       };
 
     //!FINISH HERE
+
+    //!Check on after
     case DELETE_ONE_ITEM:
       return {
         ...state,
+        todos: state.todos.map((todo) => {
+          if (todo.id !== actions.payload.id) {
+            return todo;
+          } else {
+            return {
+              ...todo,
+              completed: true,
+            };
+          }
+        }),
       };
 
     case MARK_ALL_COMPLETED:
